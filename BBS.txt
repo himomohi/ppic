@@ -1,0 +1,27 @@
+create table board(
+	no int not null auto_increment,
+	name varchar(10) not null,
+	title varchar(20) not null,
+	password int,
+	contents text,
+	PRIMARY KEY(no)
+	);
+	
+	
+DELIMITER $$
+
+CREATE PROCEDURE testDataInsert()
+
+BEGIN
+	DECLARE i INT DEFAULT 1;
+	
+	WHILE i <= 120 DO
+	INSERT INTO board(title,name,contents)
+	VALUES(concat('제목',i),concat('작성자',i),concat('내용',i));
+	SET i = i+1;
+	END WHILE;
+END$$
+
+DELEMITER $$ 	
+
+	

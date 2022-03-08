@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<div>
+    <form action="/write" method="POST">
+        <table border="1">
+            <!--제목 -->
+            <tr>
+                <td>제목: </td>
+                <td colspan="3"> <input type="text" name="title" size="50" required></td>
+
+            </tr>
+            <!--제목 -->
+            <tr>
+                <td>작성자: </td>
+                <td> <input type="text" name="name" required></td>
+
+                <td>비밀번호: </td>
+                <td> <input type="password" name="password"></td>
+            </tr>
+
+            <!--콘텐츠-->
+
+            <tr>
+                <td colspan="4">
+                    <textarea name="contents" cols="50" rows="10"></textarea>
+                </td>
+
+            </tr>
+
+            <!--Buttons-->
+            <tr>
+                <td colspan="4">
+                    <button type="submit">글쓰기</button>
+                    <button type="button" onClick="location.href='/write'">글쓰기</button>
+                    <button type="button" onClick="location.href='/list'">목록</button>
+                    <button  type="button" onClick="location.href='/delete'">삭제</button>
+                </td>
+
+            </tr>
+
+
+        </table>
+        <br>
+    </form>
+</div>
+</body>
+
+</html>

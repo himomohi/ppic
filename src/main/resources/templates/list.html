@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시판 글목록</title>
+</head>
+<body>
+<table border="1">
+    <thead>
+        <th>NO</th>
+        <th>작성자</th>
+        <th>제목</th>
+        <th>조회수</th>
+
+    </thead>
+
+    <tbody>
+        <tr th:if="${not #lists.isEmpty(list)}" th:each="row,i:${list}" >
+                <td scope="row" th:text="${row.no}"></td>
+            <td th:text="${row.name}"></td>
+            <td ><a th:text="${row.title}" th:href="@{/view(no=${row.no})}"></a></td>
+            <td th:text="${row.count}">0</td>
+
+
+        </tr>
+
+                </tbody>
+            </table>
+
+            <th:block th:each="page:${#numbers.sequence(startPage,endPage)}">
+                <a th:if="${page != nowPage}" th:href="@{/list(page=${page-1},searchKeyword=${param.searchKeyword})}" th:text="${page}"></a>
+                <strong th:if="${page == nowPage}"  th:text="${page}" style="color:red"></strong>
+            </th:block>
+
+            <form th:action="@{/list}" method="get">
+                <input type="text" name="searchKeyword">
+                <button type="submit">검색</button>
+
+            </form>
+            <button type="button" th:onClick="|location.href='@{/boardWrite}'|">글쓰기</button>
+            <button type="button" onClick="location.href='/list'">목록</button>
+
+            <!--<table border="1">-->
+<!--    <thead>-->
+<!--        <tr>-->
+<!--            <td>NO</td>-->
+<!--            <td>작성자</td>-->
+<!--            <td>제목</td>-->
+<!--        </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--       <tr th:each="board:${list}">-->
+<!--           <td th:text="${board.no}"></td>-->
+<!--           <td th:text="${board.name}"></td>-->
+<!--           <td th:text="${board.title}"></td>-->
+<!--           <div th:text="$#session."-->
+
+<!--       </tr>-->
+<!--    </tbody>-->
+
+
+<!--</table>-->
+
+</body>
+</html>

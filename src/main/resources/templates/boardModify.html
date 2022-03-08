@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>글수정</title>
+</head>
+
+<body>
+<div>
+    <form th:action="@{/update/{no}(no=${board.no})}" method="POST">
+        <table border="1">
+            <!--제목 -->
+            <tr>
+                <td>제목: </td>
+                <td colspan="3"> <input type="text" name="title" size="50" th:value="${board.title}"></td>
+
+            </tr>
+            <!--제목 -->
+            <tr>
+                <td>작성자: </td>
+                <td> <input type="text" name="name" th:value="${board.name}"></td>
+
+                <td >비밀번호: </td>
+                <td> <input type="password" name="password"></td>
+            </tr>
+
+            <!--콘텐츠-->
+
+            <tr>
+                <td colspan="4">
+                    <textarea name="contents" cols="50" rows="10" th:text="${board.contents}"></textarea>
+                </td>
+
+            </tr>
+
+            <!--Buttons-->
+            <tr>
+                <td colspan="4">
+                    <button type="submit">수정</button>
+                    <button type="button" onclick="location.href='/list'">목록</button>
+                    <button  type="button" onclick="location.href='/delete'">삭제</button>
+                </td>
+
+            </tr>
+
+
+        </table>
+        <br>
+    </form>
+</div>
+</body>
+
+</html>
